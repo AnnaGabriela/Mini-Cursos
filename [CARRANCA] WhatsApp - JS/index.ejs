@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>WhatsApp da Annas</title>
+	</head>
+	<body>
+		<h1>Conversa</h1>
+		<ul id='msgs'>
+		</ul>
+		<input id='msg' placeholder="mensagem">
+		<button id='btn'>Enviar</button>
+
+		<script src='socket.io/socket.io.js'></script>
+		<script>
+			var socket = io();
+			var lista = document.getElementById('msgs');
+			var btn = document.getElementById('btn');
+			var msg = document.getElementById('msg');
+			btn.addEventListener('click',
+				function() {
+					var conteudo = msg.value;
+					socket.emit('novaMsg', conteudo);
+				});
+			socket.on('novaMsg', function(m) {
+				lista.innerHTML += '<li>' + m + '</li>';
+			});
+
+		</script>
+	</body>
+</html>

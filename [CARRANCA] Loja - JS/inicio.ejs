@@ -1,0 +1,13 @@
+<html>
+	<body>
+		<h1>Bem Vindo!</h1>
+		<a href='/cadastrar'>Ir para Cadastro</a>
+		<ul>
+		<% for(var i = 0; i < livrosCadastrados.length; i++)
+			{%>
+			<li><%=livrosCadastrados[i].titulo%></li> 
+			<%}
+		%>
+		</ul>
+	</body>
+</html>
